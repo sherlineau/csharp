@@ -1,23 +1,25 @@
 class Buffet
 {
-  public List<Food> Menu;
+  public List<IConsumable> Menu;
 
   //constructor
   public Buffet()
   {
-    Menu = new List<Food>()
+    Menu = new List<IConsumable>()
       {
-        new Food("Katsudon", 1000, false, false),
-        new Food("Fried Chicken", 800, false, false),
-        new Food("Chicken Nuggets", 625, false, false),
-        new Food("Big Mac", 700, false, false),
-        new Food("curry", 400, true, false),
+        new Food("Katsudon", 678, false, false),
+        new Food("Fried Chicken", 320, false, false),
+        new Drink("Dr Pepper", 150, false, true),
+        new Food("Big Mac", 563, false, false),
+        new Food("curry", 700, true, false),
         new Food("sundae", 500, false, true),
-        new Food("Ribeye Steak", 800, false, false),
+        new Food("buffalo wings", 260, true, false),
+        new Drink("sweet tea", 75, false, true),
+        new Drink("vodka",64,true,false)
       };
   }
 
-  public Food Serve()
+  public IConsumable Serve()
   {
     Random rand = new Random();
     return Menu[rand.Next(Menu.Count)];

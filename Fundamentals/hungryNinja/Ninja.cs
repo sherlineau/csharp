@@ -1,39 +1,14 @@
-class Ninja
+abstract class Ninja
 {
-  private int calorieIntake;
-  public int CalorieAmount {
-    get {
-      return calorieIntake;
+    protected int calorieIntake;
+    public List<IConsumable> ConsumptionHistory;
+    public Ninja()
+    {
+        calorieIntake = 0;
+        ConsumptionHistory = new List<IConsumable>();
     }
-  }
-
-  public List<Food> FoodHistory;
-
-  // add a constructor
-  public Ninja()
-  {
-    calorieIntake = 0;
-    FoodHistory = new List<Food>() {};
-  }
-  // add a public "getter" property called "IsFull"
-  public bool IsFull
-  {
-    get{
-      bool full = false;
-      if (calorieIntake > 1200)
-      {
-        full = true;
-      }
-      return full;
-    }
-  }
-
-  // build out the Eat method
-  public void Eat(Food item)
-  {
-    calorieIntake += item.Calories;
-    FoodHistory.Add(item);
-    Console.WriteLine($"Food name: {item.Name}, Spicy: {item.IsSpicy}, Sweet: {item.IsSweet}");
-  }
+    public abstract bool IsFull {get;}
+    public abstract void Consume(IConsumable item);
 }
+
 
