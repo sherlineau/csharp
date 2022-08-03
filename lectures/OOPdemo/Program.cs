@@ -23,6 +23,6 @@ Lecture cSharp = new Lecture(max, studentList, "C#");
 // max.PrintCourses();
 cSharp.PrintAttendance();
 
-int? nullableInt;
-int notNull;
+// int? nullableInt;
+// int notNull;
 
