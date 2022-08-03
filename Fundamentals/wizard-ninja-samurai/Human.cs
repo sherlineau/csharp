@@ -33,5 +33,15 @@ class Human
     target.Health -= Strength * 5;
     return target.Health;
   }
+
+  public void printInfo()
+  {
+    Console.WriteLine($"Name: {Name}");
+    Console.WriteLine($"Strength: {Strength}");
+    Console.WriteLine($"Intelligence: {Intelligence}");
+    Console.WriteLine($"Dexterity: {Dexterity}");
+    Console.WriteLine($"Health: {Health}");
+    
+  }
 }
 
