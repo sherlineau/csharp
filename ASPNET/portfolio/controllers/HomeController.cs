@@ -20,9 +20,4 @@ public class HomeController : Controller
     return View("Contact");
   }
 
-  [HttpGet("/razor")]
-  public IActionResult RazorFun()
-  {
-    return View("RazorFun");
-  }
 }
