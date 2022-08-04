@@ -3,20 +3,26 @@ using Microsoft.AspNetCore.Mvc;
 public class HomeController : Controller
 {
   [HttpGet("/")]
-  public string Index()
+  public IActionResult Index()
   {
-    return "This is my index";
+    return View("Index");
   }
 
   [HttpGet("/projects")]
-  public string Projects()
+  public IActionResult Projects()
   {
-    return "This is my projects";
+    return View("Projects");
   }
 
   [HttpGet("/contact")]
-  public string Contact()
+  public IActionResult Contact()
   {
-    return "This is my contact";
+    return View("Contact");
+  }
+
+  [HttpGet("/razor")]
+  public IActionResult RazorFun()
+  {
+    return View("RazorFun");
   }
 }
