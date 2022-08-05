@@ -19,7 +19,7 @@ public class UserController : Controller
   }
 
   [HttpGet("/user")]
-  public IActionResult User()
+  public IActionResult ShowUser()
   {
     User Sherline = new User("Sherline","Au");
     return View(Sherline);
