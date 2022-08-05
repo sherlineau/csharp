@@ -1,0 +1,11 @@
+@using MyApp.Models
+@model List<User>
+<h1>Here are some Users</h1>
+<table class="table table-hover text-center">
+    @foreach (var names in Model)
+    {
+      <tr>
+        <td>@names.FirstName @names.LastName</td>
+      </tr>
+    }
+</table>

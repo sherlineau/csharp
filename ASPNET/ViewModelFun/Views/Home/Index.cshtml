@@ -1,0 +1,12 @@
+@model string[]
+<h1>Here is a message!</h1>
+<table class="table table-hover">
+
+  @foreach (string message in Model)
+  {
+    <tr>
+      <td>@message</td>
+    </tr>
+  }
+
+</table>

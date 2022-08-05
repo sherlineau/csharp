@@ -1,0 +1,10 @@
+@model int[]
+<h1>Here are some numbers</h1>
+<table class="table table-hover text-center">
+    @foreach (int num in Model)
+    {
+      <tr>
+        <td>@num</td>
+      </tr>
+    }
+</table>

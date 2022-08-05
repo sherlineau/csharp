@@ -13,4 +13,17 @@ public class HomeController : Controller
   {
     return View("RazorFun");
   }
+
+  [HttpGet("names")]
+  public IActionResult Names()
+  {
+    string[] names = new string[]
+    {
+      "Sally",
+      "Alex",
+      "Joey",
+      "Moose"
+    };
+    return View(names);
+  }
 }
