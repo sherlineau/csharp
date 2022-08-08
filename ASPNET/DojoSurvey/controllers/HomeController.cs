@@ -1,30 +1,54 @@
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using DojoSurveyValid.Models;
 
+namespace DojoSurveyValid.Controllers;
 
-public class HomeController : Controller 
+public class HomeController : Controller
 {
-  [HttpGet("")]
+  private readonly ILogger<HomeController> _logger;
+
+  public HomeController(ILogger<HomeController> logger)
+  {
+    _logger = logger;
+  }
+
+
+  public IActionResult Privacy()
+  {
+    return View();
+  }
+
+  [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+  public IActionResult Error()
+  {
+    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+  }
+
+
+  [HttpGet("/")]
   public IActionResult Index()
   {
-    return View("index");
+    return View("Index");
   }
 
-// for form post request
-  [HttpPost("result")]
-  public IActionResult Result(string name, string location, string language, string comment)
+  [HttpGet("/success")]
+  public IActionResult Success()
   {
-    // ViewBag.name = name;
-    // ViewBag.location = location;
-    // ViewBag.language = language;
-    // ViewBag.comment = comment;
-    Survey newSurvey = new Survey(name,location,language,comment);
-    return View(newSurvey);
+    return View("Success");
   }
 
-  // redirect to index if trying to access result through get
-  [HttpGet("result")]
-  public RedirectToActionResult Redirect()
+  [HttpPost("create")]
+  [ValidateAntiForgeryToken]
+  public IActionResult Create(Survey survey)
   {
-    return RedirectToAction("index");
+    if (ModelState.IsValid)
+    {
+      HttpContext.Session.SetString("Name", survey.Name);
+      return View("Success",survey);
+    }
+    return Index();
   }
+
+
 }

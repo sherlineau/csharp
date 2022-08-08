@@ -1,39 +1,41 @@
-<div class='mx-auto mt-5' style="width: 500px">
-  <h1>Coding Dojo Survey</h1>
-  <form action="result" method="POST">
-    <div class="form-group mb-3">
-      <label for="Name" class="form-label">Your Name</label>
-      <input type="text" name="Name" id="Name" class="form-control">
-    </div>
-    
-    <div class="form-group mb-3">
-      <label for="Location" class="form-label">Dojo Location</label>
-      <select name="Location" id="Location" class="form-control">
-        <option value="Online">Online</option>
-        <option value="San Jose">San Jose</option>
-        <option value="Tulsa">Tulsa</option>
-        <option value="Seattle">Seattle</option>
-        <option value="Dallas">Dallas</option>
-        <option value="San Diego">San Diego</option>
-      </select>
-    </div>
-    
-    <div class="form-group mb-3">
-      <label for="Language" class="form-label">Favorite Language:</label>
-      <select name="Language" id="Language" class="form-control">
-        <option value="JavaScript">JavaScript</option>
-        <option value="Python">Python</option>
-        <option value="C#">C#</option>
-      </select>
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Survey
+
+<form asp-action="Create" asp-controller="Home" method="POST">
+    <div class="form-group">
+        <label class="form-label" asp-for="Name"></label>
+        <span asp-validation-for="Name" class="text-danger"></span>
+        <input class="form-control" asp-for="Name">
     </div>
 
-    <div class="form-group mb-3">
-      <label for="Comment" class="form-label">Comment</label>
-      <textarea name="Comment" id="Comment" cols="30" rows="4" class="form-control"></textarea>
+    <div class="form-group">
+        <label class="form-label" asp-for="Location"></label>
+        <select asp-for="Location" class="form-control">
+            <option value="Online">Online</option>
+            <option value="Burbank">Burbank</option>
+            <option value="Seattle">Seattle</option>
+            <option value="Chicago">Chicago</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label class="form-label" asp-for="Language"></label>
+        <select asp-for="Language" class="form-control">
+            <option value="C#">C#</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+        </select>
     </div>
 
+    <div class="form-group">
+        <label class="form-label" asp-for="Comment"></label>
+        <span asp-validation-for="Comment" class="text-danger"></span>
+        <textarea class="form-control" asp-for="Comment"></textarea>
+    </div>
     <div class="d-grid mt-3">
-      <button type="submit" class="btn btn-primary">Submit</button>
+        <input class="btn btn-primary" type="submit" value="Submit">
     </div>
-  </form>
-</div>
+</form>
