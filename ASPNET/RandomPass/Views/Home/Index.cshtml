@@ -1,0 +1,14 @@
+﻿@{
+  ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+  <h1>Random Passcode Generator</h1>
+  <fieldset class="border">
+    <legend>Attempt #@TempData["generate"]</legend>
+    <p class="display-6">@TempData["passcode"]</p>
+  </fieldset>
+  <a href="/" class="btn btn-success mt-3">Generate</a>
+  <a href="/clear" class="btn btn-danger mt-3">Clear Attempts</a>
+
+</div>
