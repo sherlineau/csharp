@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model bool
+
+<div class="d-flex justify-content-between">
+    <p class="display-6">Happiness: @TempData["Happiness"]</p>
+    <p class="display-6">Fullness: @TempData["Fullness"]</p>
+    <p class="display-6">Energy: @TempData["Energy"]</p>
+    <p class="display-6">Meals: @TempData["Meals"]</p>
+</div>
+<div>
+    <img src="~/Content/Images/Kyojuro_colored_body.jpg" asp-append-version="true" />
+</div>
+<p class="display-6">Message: @TempData["Message"]</p>
+
+@{
+    if (@Model)
+    {
+        <form action="reset" method="POST">
+            <div class="d-grid">
+                <input type="submit" value="Restart" class="btn btn-primary">
+            </div>
+        </form>
+    }
+    else
+    {
+        <div class="d-flex justify-content-center">
+
+        <form action="feed" method="POST">
+            <button type="submit" class="btn btn-success btn-lg mx-3">Feed</button>
+        </form>
+
+        <form action="work" method="POST">
+            <button type="submit" class="btn btn-warning btn-lg mx-3">Work</button>
+        </form>
+
+        <form action="play" method="POST">
+            <button type="submit" class="btn btn-info btn-lg mx-3">Play</button>
+        </form>
+
+        <form action="sleep" method="POST">
+            <button type="submit" class="btn btn-dark btn-lg mx-3">Sleep</button>
+        </form>
+        </div>
+    }
+
+}
