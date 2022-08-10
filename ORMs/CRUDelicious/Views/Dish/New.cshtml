@@ -1,0 +1,44 @@
+@model Dish
+<div class="container w-75 mx-auto">
+  <h2 class="text-center">Add a new dish</h2>
+  <form asp-controller="Dish" asp-action="Create" method="POST" class="shadow p-3 rounded">
+    <div class="mb-3">
+      <label asp-for="Name" class="form-label"></label>
+      <span asp-validation-for="Name" class="text-danger font-weight-bold"></span>
+      <input asp-for="Name" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label asp-for="Chef" class="form-label"></label>
+      <span asp-validation-for="Chef" class="text-danger font-weight-bold"></span>
+      <input asp-for="Chef" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label asp-for="Calories" class="form-label"></label>
+      <span asp-validation-for="Calories" class="text-danger font-weight-bold"></span>
+      <input asp-for="Calories" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label asp-for="Tastiness" class="form-label"></label>
+      <select asp-for="Tastiness" class="form-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label asp-for="Description" class="form-label"></label>
+      <span asp-validation-for="Description" class="text-danger font-weight-bold"></span>
+      <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+    </div>
+    
+    <div class="d-grid">
+      <button class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>

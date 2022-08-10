@@ -1,0 +1,17 @@
+@model Dish
+
+<div class="container">
+  <div class="row text-center">
+    <p class="display-3">@Model.Name</p>
+    <p class="display-6">@Model.Chef</p>
+  </div>
+  <hr>
+</div>
+<p>@Model.Description</p>
+
+<div class="d-flex justify-content-center">
+  <form asp-controller="Dish" asp-action="Delete" asp-route-deletedDishId="@Model.DishId" method="post">
+    <button class="btn btn-danger m-3 btn-lg">Delete</button>
+  </form>
+  <a href="/dishes/@Model.DishId/edit" class="btn btn-primary m-3 btn-lg"> Edit </a>
+</div>

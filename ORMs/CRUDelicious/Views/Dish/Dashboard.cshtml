@@ -1,0 +1,22 @@
+@model List<Dish>
+
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Welcome to CRUDelicious</h1>
+    <a class="text-light btn btn-success btn-lg" asp-controller="Dish" asp-action="New">Add a Dish</a>
+  </div>
+  <table class="table table-hover w-75 mx-auto mt-3">
+    <thead>
+      <td>Check out some recent dishes!</td>
+    </thead>
+    @foreach (Dish item in Model)
+    {
+      <tr>
+        <td>
+          <a asp-controller="Dish" asp-action="ViewDish" asp-route-dishId="@item.DishId">@item.Name</a>
+          by @item.Chef
+        </td>
+      </tr>
+    }
+  </table>
+</div>
