@@ -1,0 +1,30 @@
+@model List<Dish>
+
+<div class="d-flex justify-content-between align-items-center">
+  <h1>Yum, take a look at our tasty dishes!</h1>
+  <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Dish" asp-action="DisplayForm">Create Dish</a>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Chef</th>
+      <th>Tastiness</th>
+      <th>Calories</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (Dish d in Model)
+    {
+      <tr>
+        <td>@d.Name</td>
+        @if (d.DishChef != null){
+          <td>@d.DishChef.FullName()</td>
+        }
+        <td>@d.Tastiness</td>
+        <td>@d.Calories</td>
+      </tr>
+    }
+  </tbody>
+</table>

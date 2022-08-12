@@ -1,0 +1,25 @@
+@model List<Chef>
+<div class="d-flex justify-content-between align-items-center">
+  <h1>Check out our roster of Chefs!</h1>
+  <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Chef" asp-action="DisplayForm">Create Chef</a>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th># of Dishes</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (Chef c in Model)
+    {
+      <tr>
+        <td>@c.FullName()</td>
+        <td>@c.Age()</td>
+        <td>@c.CreatedDishes.Count</td>
+      </tr>
+    }
+  </tbody>
+</table>

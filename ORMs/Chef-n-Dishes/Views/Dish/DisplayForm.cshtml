@@ -1,0 +1,51 @@
+@model Dish
+
+<div class="container w-75 mx-auto">
+  <h2>Add a dish</h2>
+  <form asp-controller="Dish" asp-action="Create">
+    <div class="mb-3">
+      <label asp-for="Name" class="form-label"></label>
+      <span asp-validation-for="Name" class="text-danger font-weight-bold"></span>
+      <input asp-for="Name"  class="form-control"/>
+    </div>
+
+    <div class="mb-3">
+      <label asp-for="ChefId" class="form-label"></label>
+      <span asp-validation-for="ChefId" class="text-danger font-weight-bold"></span>
+      <select asp-for="ChefId" class="form-select" required>
+        @foreach(var chef in ViewBag.allchefs)
+        {
+          @* foreach loop goes through the view bag and creates a new option for each chef *@
+          <option value="@chef.ChefId">@chef.FirstName @chef.LastName</option>
+        }
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label asp-for="Calories" class="form-label"></label>
+      <span asp-validation-for="Calories" class="text-danger font-weight-bold"></span>
+      <input asp-for="Calories" class="form-control"/>
+    </div>
+
+    <div class="mb-3">
+      <label asp-for="Tastiness" class="form-label"></label>
+      <select asp-for="Tastiness" class="form-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label asp-for="Description" class="form-label"></label>
+      <span asp-validation-for="Description" class="text-danger font-weight-bold"></span>
+      <textarea asp-for="Description" rows="3" class="form-control"></textarea>
+    </div>
+    
+    <div class="d-grid">
+      <button class="btn btn-primary">Add Dish</button>
+    </div>
+  </form>
+</div>
