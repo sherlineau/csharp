@@ -17,7 +17,10 @@ public class ChefController : Controller
   {
     List<Chef> AllChefs = _context.Chefs.ToList();
     foreach(Chef a in AllChefs){
-      a.CreatedDishes = _context.Dishes.Include(d => d.DishChef).Where(d => d.ChefId == a.ChefId).ToList();
+      a.CreatedDishes = _context.Dishes
+          .Include(d => d.DishChef)
+          .Where(d => d.ChefId == a.ChefId)
+          .ToList();
     }
     return View("Dashboard", AllChefs);
   }

@@ -16,7 +16,7 @@
         @foreach(var chef in ViewBag.allchefs)
         {
           @* foreach loop goes through the view bag and creates a new option for each chef *@
-          <option value="@chef.ChefId">@chef.FirstName @chef.LastName</option>
+          <option value="@chef.ChefId">@chef.FullName()</option>
         }
       </select>
     </div>

@@ -33,6 +33,10 @@ public class DishController : Controller
   [HttpPost("/dishes/create")]
   public IActionResult Create(Dish newDish)
   {
+    if (newDish.ChefId == null) 
+    {
+      ModelState.AddModelError("ChefId", "error message");
+    }
     if (ModelState.IsValid == false)
     {
       return DisplayForm();

@@ -19,8 +19,7 @@ public class Chef
   [PastDate]
   [Display(Name = "Date of Birth")]
   [DataType(DataType.Date)]
-  
-  public DateTime Birthday { get; set; }
+  public DateTime? Birthday { get; set; }
 
   public DateTime CreatedAt { get; set; } = DateTime.Now;
   public DateTime UpdatedAt { get; set; } = DateTime.Now;
@@ -34,12 +33,17 @@ public class Chef
 
   public int Age()
   {
-    int age =  DateTime.Now.Year - Birthday.Year;
+    if ( Birthday != null) {
+      DateTime dob = (DateTime)Birthday;
+      
+    int age =  DateTime.Now.Year - dob.Year;
 
-    if(DateTime.Now.Month < Birthday.Month || (DateTime.Now.Month == Birthday.Month && DateTime.Now.Day < Birthday.Day))
+    if(DateTime.Now.Month < dob.Month || (DateTime.Now.Month == dob.Month && DateTime.Now.Day < dob.Day))
     {
       age--;
     }
     return age;
+    } 
+    return 0;
   }
 }
