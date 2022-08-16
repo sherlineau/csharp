@@ -1,0 +1,27 @@
+@model Product
+<div class="container w-75 mx-auto shadow p-5">
+  <p class="display-6">Add a product</p>
+  <form asp-controller="Product" asp-action="Create">
+    <div class="mb-3">
+      <label asp-for="Name" class="form-label"></label>
+      <span asp-validation-for="Name" class="text-danger font-weight-bold"></span>
+      <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label asp-for="Description" class="form-label"></label>
+      <span asp-validation-for="Description" class="text-danger font-weight-bold"></span>
+      <input asp-for="Description" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label asp-for="Price" class="form-label"></label>
+      <span asp-validation-for="Price" class="text-danger font-weight-bold"></span>
+      <input asp-for="Price" class="form-control" />
+    </div>
+
+    <div class="d-grid">
+      <button class="btn btn-primary">Add Product</button>
+    </div>
+  </form>
+</div>

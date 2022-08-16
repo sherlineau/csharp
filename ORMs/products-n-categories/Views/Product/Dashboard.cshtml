@@ -1,0 +1,20 @@
+@model List<Product>
+
+@{
+  Product newProduct = new Product();
+}
+
+<div class="row">
+  <div class="col">
+    <partial name="_New" model="@newProduct"></partial>
+  </div>
+
+  <div class="col w-75 mx-auto shadow p-5">
+    <ul class="list-group list-group-flush">
+      @foreach (Product item in Model)
+      {
+        <li class="list-group-item"><a asp-action="Details" asp-route-productId="@item.ProductId">@item.Name</a></li>
+      }
+    </ul>
+  </div>
+</div>

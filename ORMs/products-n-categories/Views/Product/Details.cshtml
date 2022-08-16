@@ -1,0 +1,35 @@
+@model Product
+
+<h1 class="display-1">Product: @Model.Name</h1>
+
+<div class="row">
+  <div class="col mx-auto p-5">
+    <p class="display-6">Categories:</p>
+    <ul class="list-group list-group-flush">
+      @foreach (Association i in Model.AssociatedCategories)
+      {
+        if (i.Category != null)
+        {
+          <li class="list-group-item">@i.Category.Name</li>
+        }
+      }
+    </ul>
+  </div>
+
+  <div class="col w-75 mx-auto shadow p-5">
+    <p class="display-6">Add Category to Product</p>
+    <form asp-action="AddCategoryToProduct" asp-controller="Product" asp-route-productId="@Model.ProductId" class="form-group">
+      <select class="form-select" name="categoryId" required placeholder="Choose a category">
+        <option value="0">Select a category</option>
+        @foreach (Category c in ViewBag.categories)
+        {
+          <option value="@c.CategoryId">@c.Name</option>
+        }
+      </select>
+
+      <div class="d-grid mt-3">
+        <button class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

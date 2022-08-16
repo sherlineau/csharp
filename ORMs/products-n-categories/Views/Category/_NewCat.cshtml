@@ -1,0 +1,15 @@
+@model Category
+<div class="container w-75 mx-auto shadow p-5">
+  <p class="display-6">Add a Category</p>
+  <form asp-controller="Category" asp-action="Create">
+    <div class="mb-3">
+      <label asp-for="Name" class="form-label"></label>
+      <span asp-validation-for="Name" class="text-danger font-weight-bold"></span>
+      <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="d-grid">
+      <button class="btn btn-primary">Add Product</button>
+    </div>
+  </form>
+</div>

@@ -4,18 +4,18 @@ using Microsoft.EntityFrameworkCore;
 
 public class DishController : Controller
 {
-  private MyContext _context;
+  private MyContext _db;
 
   public DishController(MyContext context)
   {
-    _context = context;
+    _db = context;
   }
 
   [HttpGet("/dishes")]
   public IActionResult Dashboard()
   {
     // gets a one-to-many joined table from database -> table is joined on chef id and grabs the corresponding Chef object with Include
-    List<Dish> AllDishes = _context.Dishes.Include(d => d.DishChef).ToList();
+    List<Dish> AllDishes = _db.Dishes.Include(d => d.DishChef).ToList();
     return View("Dashboard", AllDishes);
   }
 
@@ -24,7 +24,7 @@ public class DishController : Controller
   public IActionResult DisplayForm()
   {
     // compiles a list of chefs from database to be used for dropdown select
-    List<Chef> allchefs = _context.Chefs.ToList();
+    List<Chef> allchefs = _db.Chefs.ToList();
     ViewBag.allchefs = allchefs;
     return View("DisplayForm");
   }
@@ -42,9 +42,9 @@ public class DishController : Controller
       return DisplayForm();
     }
     // add dish to database set
-    _context.Dishes.Add(newDish);
+    _db.Dishes.Add(newDish);
     // save changes to mysql
-    _context.SaveChanges();
+    _db.SaveChanges();
     // redirect to dashboard method
     return RedirectToAction("Dashboard");
   }
