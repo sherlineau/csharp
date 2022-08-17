@@ -27,6 +27,7 @@ public class User
   public string Password { get; set; }
 
   [NotMapped]
+  [Required(ErrorMessage = " is required")]
   [Compare("Password", ErrorMessage = "Passwords must match")]
   [DataType(DataType.Password)]
   public string Confirm { get; set; }

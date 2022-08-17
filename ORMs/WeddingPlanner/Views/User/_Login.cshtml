@@ -4,16 +4,16 @@
 <form asp-controller="User" asp-action="Login" method="POST">
   <div class="mb-3">
     <label asp-for="LoginEmail" class="form-label"></label>
-    <span asp-validation-for="LoginEmail" class="text-danger font-weight-bold"></span>
     <input asp-for="LoginEmail" class="form-control" />
   </div>
 
   <div class="mb-3">
     <label asp-for="LoginPassword" class="form-label"></label>
-    <span asp-validation-for="LoginPassword" class="text-danger font-weight-bold"></span>
     <input asp-for="LoginPassword" class="form-control" />
   </div>
 
+  <span asp-validation-for="LoginEmail" class="text-danger font-weight-bold"></span>
+  <span asp-validation-for="LoginPassword" class="text-danger font-weight-bold"></span>
   <div class="d-grid">
     <button class="btn btn-primary">Login</button>
   </div>
