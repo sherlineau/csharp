@@ -15,7 +15,7 @@ public class CommentAttribute : ValidationAttribute
     }
     if (value != null)
     {
-      string comment = value as string;
+      string comment = (string)value;
       if (comment.Length < 20)
       {
         return new ValidationResult(FormatErrorMessage(validationContext.DisplayName));
