@@ -1,0 +1,25 @@
+@model Event
+
+<form asp-controller="Event" asp-action="Create" method="POST">
+  <div class="mb-3">
+    <label asp-for="WedderOne" class="form-label"></label>
+    <span asp-validation-for="WedderOne" class="text-danger font-weight-bold"></span>
+    <input asp-for="WedderOne" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label asp-for="WedderTwo" class="form-label"></label>
+    <span asp-validation-for="WedderTwo" class="text-danger font-weight-bold"></span>
+    <input asp-for="WedderTwo" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label asp-for="Date" class="form-label"></label>
+    <span asp-validation-for="Date" class="text-danger font-weight-bold"></span>
+    <input asp-for="Date" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label asp-for="Address" class="form-label"></label>
+    <span asp-validation-for="Address" class="text-danger font-weight-bold"></span>
+    <input asp-for="Address" class="form-control" />
+  </div>
+  <button>Create</button>
+</form>

@@ -1,0 +1,23 @@
+@model Event
+@{
+  DateTime date = DateTime.Now;
+  if (Model.Date != null)
+  {
+    date = (DateTime)Model.Date;
+  }
+}
+<div class="container">
+  <p class="display-3">@Model.Couple()'s Wedding</p>
+  <p class="display-6">Date: @date.ToString("MMMM dd, yyyy")</p>
+
+  <p class="font-weight-bold">Guests</p>
+  <ul class="list-group list-group-flush">
+    @foreach (UserRSVPEvent g in Model.Guests)
+    {
+      if (g.Guest != null)
+      {
+        <li class="list-group-item">@g.Guest.FullName()</li>
+      }
+    }
+  </ul>
+</div>

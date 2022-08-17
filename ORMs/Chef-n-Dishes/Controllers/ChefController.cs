@@ -34,6 +34,10 @@ public class ChefController : Controller
   [HttpPost("/chefs/create")]
   public IActionResult Create(Chef newChef)
   {
+    if(newChef == null)
+    {
+      // add model state error
+    }
     if (ModelState.IsValid == false)
     {
       return DisplayForm();

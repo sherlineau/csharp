@@ -1,0 +1,60 @@
+@model List<Event>
+@{
+  ViewData["Title"] = "Wedding Planner User Dashboard";
+}
+
+<h1>Hello, @Context.Session.GetString("Name")</h1>
+
+<table class="table">
+  <thead>
+    <th>Wedding</th>
+    <th>Date</th>
+    <th>Guest</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    @foreach (Event e in Model)
+    {
+      bool creator = e.UserId == Context.Session.GetInt32("UUID");
+      bool isRsvped = e.Guests.Any(g => g.UserId == Context.Session.GetInt32("UUID"));
+      DateTime date = DateTime.Now;
+      if (e.Date != null)
+      {
+        date = (DateTime)e.Date;
+      }
+      <tr>
+        <td>
+          <a asp-controller="Event" asp-action="Details" asp-route-eventId="@e.EventId">@e.Couple()</a>
+        </td>
+        <td>@date.ToString("MMM dd, yyyy")</td>
+        <td>@e.Guests.Count</td>
+        <td>
+          @if (creator)
+          {
+            <form asp-controller="Event" asp-action="Delete" asp-route-eventId="@e.EventId">
+              <button class="btn btn-danger">Delete</button>
+            </form>
+          }
+          else
+          {
+            <form asp-controller="Event" asp-action="RSVP" asp-route-eventId="@e.EventId">
+              @if (isRsvped)
+              {
+                <button class="btn btn-warning">Un-RSVP</button>
+              }
+              else
+              {
+                <button class="btn btn-success">RSVP</button>
+              }
+            </form>
+          }
+
+
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+<div class="d-flex flex-row-reverse">
+  <a asp-controller="Event" asp-action="New" class="btn btn-primary btn-lg">Create Wedding</a>
+</div>
