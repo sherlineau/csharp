@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-public class EmptyOrTwentyCharactersAttribute : ValidationAttribute
+public class CommentAttribute : ValidationAttribute
 {
   public override string FormatErrorMessage(string name)
   {
